@@ -73,3 +73,9 @@ export interface ISearch {
   totalElements?: number;
   totalPages?:number;
 }
+
+export interface ICategory {
+  id?: number;
+  nombre?: string;
+  descripcion?: string;
+}

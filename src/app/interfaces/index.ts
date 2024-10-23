@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs';
 export interface ILoginResponse {
   accessToken: string;
   expiresIn: number
@@ -78,4 +79,15 @@ export interface ICategory {
   id?: number;
   nombre?: string;
   descripcion?: string;
+}
+
+
+export interface IProduct{
+  id?: number;
+  nombre?: string;
+  descripcion?: string;
+  precio?: number;
+  cantidadStock?: number;
+  nombreCategoria?: string;
+  categoria?: ICategory;
 }

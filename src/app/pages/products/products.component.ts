@@ -57,48 +57,31 @@ export class ProductsComponent implements OnInit{
     this.modalService.closeAll();
   }
 
-  // callEdition(product: IProduct){
-  //   this.productsForm.controls['id'].setValue(product.id ? JSON.stringify(product.id) : '');
-  //   this.productsForm.controls['nombre'].setValue(product.nombre ? product.nombre : '');
-  //   this.productsForm.controls['descripcion'].setValue(product.descripcion ? product.descripcion : '');
-  //   this.productsForm.controls['precio'].setValue(product.precio ? JSON.stringify(product.precio) : '');
-  //   this.productsForm.controls['cantidadStock'].setValue(product.cantidadStock ? JSON.stringify(product.cantidadStock) : '');
-  //   this.productsForm.controls['nombreCategoria'].setValue(product.nombreCategoria ? product.nombreCategoria : '');
-  //   this.modalService.displayModal('md', this.addProductsModal)
-  // }
-
   callEdition(product: IProduct): void {
-    this.currentProduct = product; // Guarda el producto actual que se va a editar
+    this.currentProduct = product; 
     this.productsForm.patchValue({
       id: String(product.id),
       nombre: product.nombre,
       descripcion: product.descripcion,
       precio: String(product.precio),
       cantidadStock: String(product.cantidadStock),
-      nombreCategoria: product.categoria?.nombre // Asegúrate de manejar bien el objeto categoria
+      nombreCategoria: product.categoria?.nombre 
     });
-    this.modalService.displayModal('md', this.addProductsModal); // Muestra el modal para editar
+    this.modalService.displayModal('md', this.addProductsModal);
   }
-
-
-  // updateProduct(product : IProduct) {
-  //   this.productosService.update(product);
-  //   this.modalService.closeAll();
-  // }
 
   updateProduct(): void {
     if (this.currentProduct) {
       const updatedProduct: IProduct = {
-        id: this.currentProduct.id, // ID del producto actual
+        id: this.currentProduct.id, 
         nombre: this.productsForm.value.nombre ?? '',
-        descripcion: this.productsForm.value.descripcion ?? '', // Usar '' si es null o undefined
-        precio: Number(this.productsForm.value.precio), // Convertir a número
-        cantidadStock: Number(this.productsForm.value.cantidadStock), // Convertir a número
+        descripcion: this.productsForm.value.descripcion ?? '', 
+        precio: Number(this.productsForm.value.precio), 
+        cantidadStock: Number(this.productsForm.value.cantidadStock), 
         nombreCategoria: this.productsForm.value.nombreCategoria ?? ''
       };
-  
-      this.productosService.update(updatedProduct); // Llama al servicio para actualizar
-      this.modalService.closeAll(); // Cierra el modal después de la actualización
+      this.productosService.update(updatedProduct);
+      this.modalService.closeAll(); 
     }
   }  
   ngOnInit(): void {

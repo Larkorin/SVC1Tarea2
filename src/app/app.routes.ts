@@ -42,7 +42,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'app',
-        redirectTo: 'users',
+        redirectTo: 'categories',
         pathMatch: 'full',
       },
       {
@@ -68,7 +68,7 @@ export const routes: Routes = [
             IRoleType.user
           ],
           name: 'Dashboard',
-          showInSidebar: true
+          showInSidebar: false
         }
       },
       {
@@ -94,7 +94,7 @@ export const routes: Routes = [
             IRoleType.user,
           ],
           name: 'games',
-          showInSidebar: true
+          showInSidebar: false
         }
       },
       {
@@ -107,7 +107,7 @@ export const routes: Routes = [
             IRoleType.user,
           ],
           name: 'orders',
-          showInSidebar: true
+          showInSidebar: false
         }
       },
       {
@@ -126,8 +126,8 @@ export const routes: Routes = [
       },
       {
         path: 'categories',
-        canActivate: [AuthGuard],
         component: CategoriesComponent,
+        canActivate: [AuthGuard],
         data: { 
           authorities: [
             IRoleType.admin, 

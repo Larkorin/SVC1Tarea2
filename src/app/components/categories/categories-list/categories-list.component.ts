@@ -11,8 +11,8 @@ import { ICategory } from '../../../interfaces';
 export class CategoriesListComponent implements OnInit{
   @Input() title: string  = '';
   @Input() categories: ICategory[] = [];
-  // @Output() callModalAction= new EventEmitter();
-  // @Output() callDeleteAction= new EventEmitter();
+    
+  @Input() areActionsAvailable: boolean = false;
   
   @Output() callModalAction: EventEmitter<ICategory> = new EventEmitter<ICategory>();
   @Output() callDeleteAction: EventEmitter<ICategory> = new EventEmitter<ICategory>();
